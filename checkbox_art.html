@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Audiowide'>
+    <link rel="stylesheet" href="checkbox_art.css">
+</head>
+
+<body onload="generate_checkboxes()">
+
+    <script>
+        function generate_checkboxes() {
+            var str = "";
+            //generate table
+            str += "<table><tbody>";
+            //generate table rows
+            for (let j = 0; j < 25; j++) {
+                str += "<tr>";
+                //generate table columns
+                for (let i = 0; i < 25; i++) {
+                    str += "<td><input onmouseover='check(this)' type='checkbox'></td>";
+                }
+                str += "</tr>";
+            }
+            str += "</tbody></table>";
+            document.getElementById("checkboxes").innerHTML = str;
+        }
+
+        // Credit to https://stackoverflow.com/questions/36754940/check-multiple-checkboxes-with-click-drag
+        function check(box) {
+            if (mouseDown) {
+                box.checked = 1 - box.checked;
+            }
+        }
+        // Credit to http://stackoverflow.com/questions/322378/javascript-check-if-mouse-button-down
+        var mouseDown = 0;
+        document.body.onmousedown = function () { ++mouseDown; }
+        document.body.onmouseup = function () { --mouseDown; }
+    </script>
+
+    <div class="main">
+        <div id="rectangle" class="sidebar">
+            <h1>Checkbox
+                Art</h1>
+            <h2>by antillean-nighthawk</h2>
+            <p>Click and drag to paint!</p>
+        </div>
+        <div id="checkboxes"></div>
+    </div>
+
+</body>
+
+</html>
